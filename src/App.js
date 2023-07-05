@@ -11,7 +11,7 @@ import Clarifai from 'clarifai';
 // const Clarifai = require('clarifai');
 
 const app = new Clarifai.App({
- apiKey: 'bd721852e03f4d62829f536d1f97d5c8'
+ apiKey: APIKEY;
 });
 
 class App extends Component {
