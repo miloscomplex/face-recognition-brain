@@ -22,6 +22,10 @@ nav {
   margin-right: 3rem;
 }
 
+.particles-bg-canvas-self{
+  z-index: -1;
+}
+
 .center { 
   display: flex;
   justify-content: center;
