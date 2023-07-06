@@ -6,12 +6,13 @@ import Logo from './components/Logo';
 import ImageLinkForm from './components/ImageLinkForm';
 import Rank from "./components/Rank";
 import ParticlesBg from "particles-bg";
-import Clarifai from 'clarifai';
+import { API_KEY } from "./services/KEY";
+
 
 // const Clarifai = require('clarifai');
 
 const app = new Clarifai.App({
- apiKey: APIKEY;
+ apiKey: API_KEY;
 });
 
 class App extends Component {
