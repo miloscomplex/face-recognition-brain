@@ -6,16 +6,36 @@ import Logo from './components/Logo';
 import ImageLinkForm from './components/ImageLinkForm';
 import Rank from "./components/Rank";
 import ParticlesBg from "particles-bg";
-import { API_KEY } from "./services/KEY";
+//import Clarifai from "clarifai";
+import { API_KEY, PAT_KEY, CLARIFAI_USER } from "./services/KEY";
+import FaceDetection from "./services/FaceDetection";
+import FaceRecognition from "./components/FaceRecognition";
 
-
-// const Clarifai = require('clarifai');
-
-const app = new Clarifai.App({
- apiKey: API_KEY;
-});
 
 class App extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      input: "",
+      imageUrl: "", 
+      box: {}
+    }
+  }
+
+  onInputChange = (event) => {
+    this.setState({input: event.target.value});
+    //console.log(event.target.value);
+  }
+
+
+
+  onBtnSubmit = () => {
+    console.log("click");
+    this.setState({imageUrl: this.state.input})
+    const faceDetection = FaceDetection(this.state.input);
+  }
+
   render() {
     return (
       <div className="app">
@@ -23,7 +43,9 @@ class App extends Component {
         <Navigation />
         <Logo />
         <Rank />
-        <ImageLinkForm />
+        <ImageLinkForm onInputChange={this.onInputChange}onBtnSubmit={this.onBtnSubmit} />
+        <FaceRecognition imageUrl={this.state.imageUrl} />
+
         {/* <Navigation />
         <Logo />
         <ImageLinkForm />
