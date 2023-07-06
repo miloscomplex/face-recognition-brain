@@ -1,9 +1,8 @@
 import { PAT_KEY } from "./KEY";
 
-const FaceDetection = (imgURL) => {
-    // URL of image to use. Change this to your image.
+const FaceDetection = ({ imgUrl, }) => {
     console.log("faceDetection was called");
-    const IMAGE_URL = imgURL;
+    const IMAGE_URL = imgUrl;
 
     const raw = JSON.stringify({
     "user_app_id": {
@@ -36,9 +35,26 @@ const FaceDetection = (imgURL) => {
 
     fetch(`https://api.clarifai.com/v2/models/face-detection/versions/6dc7e46bc9124c5c8824be4822abe105/outputs`, requestOptions)
         .then(response => response.json())
-        .then(result => console.log(result.outputs[0].data.regions[0].region_info.bounding_box))
+        .then(result => displayFaceBox(calculateFaceLocation(result.outputs[0].data.regions[0].region_info.bounding_box)))
         .catch(error => console.log('error', error));
 
+    const calculateFaceLocation = (data) => {
+        const image = document.getElementById('input-image');
+        const width = Number(image.width);
+        const height = Number(image.height);
+
+        return {
+            leftCol: data.left_col * width,
+            topRow: data.top_row * height,
+            rightCol: width - (data.right_col * width),
+            botomRow: height - (data.bottom_row * height)
+        }
+    }
+
+    const displayFaceBox = (box) => {
+        //const boundingBox = document.querySelector('.bounding-box');
+        //boundingBox.computedStyleMap.backgroundColor = "yellow";
+    }
 }
 
 export default FaceDetection;

@@ -10,6 +10,7 @@ import ParticlesBg from "particles-bg";
 import { API_KEY, PAT_KEY, CLARIFAI_USER } from "./services/KEY";
 import FaceDetection from "./services/FaceDetection";
 import FaceRecognition from "./components/FaceRecognition";
+import { calculateNewValue } from "@testing-library/user-event/dist/utils";
 
 
 class App extends Component {
@@ -25,13 +26,9 @@ class App extends Component {
 
   onInputChange = (event) => {
     this.setState({input: event.target.value});
-    //console.log(event.target.value);
   }
 
-
-
   onBtnSubmit = () => {
-    console.log("click");
     this.setState({imageUrl: this.state.input})
     const faceDetection = FaceDetection(this.state.input);
   }
@@ -44,8 +41,7 @@ class App extends Component {
         <Logo />
         <Rank />
         <ImageLinkForm onInputChange={this.onInputChange}onBtnSubmit={this.onBtnSubmit} />
-        <FaceRecognition imageUrl={this.state.imageUrl} />
-
+        <FaceRecognition imageUrl={this.state.imageUrl} box={this.state.box} />
         {/* <Navigation />
         <Logo />
         <ImageLinkForm />

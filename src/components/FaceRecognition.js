@@ -1,10 +1,13 @@
 import React from "react";
 
-const FaceRecognition = ({imageUrl}) => {
+const FaceRecognition = ({imageUrl, box}) => {
     return (
         <div className="center img-holder">
-            <img id='inputimage' alt="" src={imageUrl} />
-        </div>
+            <img id='input-image' alt="" src={imageUrl} />
+            <div className="bounding-box">
+                sj
+            </div>
+         </div>
     )
 }
 
