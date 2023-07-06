@@ -33,23 +33,26 @@ nav {
 
 .logo {
   width: 200px;
-  /* background: linear-gradient(to right, rgb(129, 238, 129), rgb(0, 179, 255)); */
   height: 200px;
   margin: 0 auto;
 }
 
 .form { 
   width: 700px;
-
 }
 
 .img-holder {
   max-width: 500px;
 }
 
+#input-image {
+  max-width: 500px;
+}
+
 .bounding-box {
   position: absolute;
   box-shadow: 0 0 0 3px #149df2 inset;
+  border-radius: .3rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
