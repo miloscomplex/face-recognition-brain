@@ -2,9 +2,9 @@ import React from "react";
 
 const Signin = ({ onRouteChange }) => {
     return (
-        <div className="br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw5 shadow-5 center">
+        <div className="form br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw5 shadow-5 center">
             <main className="pa4 black-80">
-                <form className="measure">
+                <div className="measure">
                 <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
                 <legend className="f2 fw6 ph0 mh0">Sign In</legend>
                 <div className="mt3">
@@ -27,7 +27,7 @@ const Signin = ({ onRouteChange }) => {
                 <div className="lh-copy mt3">
                     <p href="#0"  onClick={ () => onRouteChange('register')} className="f6 link dim black db pointer">Register</p>
                 </div>
-                </form>
+                </div>
             </main>
         </div>
     )
