@@ -24,6 +24,7 @@ class Register extends Component {
     }
 
     onSubmitRegister = () => {
+        //console.log('onSubmitRegister called')
         fetch('http://localhost:3000/register', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
@@ -35,7 +36,7 @@ class Register extends Component {
         })
         .then(res => res.json())
         .then(user => {
-            if (user === 'success') {
+            if (user) {
                 this.props.loadUser(user)
                 this.props.onRouteChange('home')
             }
