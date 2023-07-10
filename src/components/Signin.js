@@ -20,6 +20,12 @@ class Signin extends React.Component {
     }
 
     onSubmitSignin = () => {
+        const { signInEmail, signInPassword } = this.state;
+
+        if ( !signInEmail || !signInPassword ) {
+            return console.log('unable to signin');
+        }
+
         fetch('http://localhost:3000/signin', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},

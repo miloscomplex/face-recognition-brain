@@ -28,7 +28,7 @@ class Register extends Component {
 
         //console.log('onSubmitRegister called')
         if (!name || !email || !password) {
-            return console.log('unable to get user');
+            return console.log('unable to register');
         }
         fetch('http://localhost:3000/register', {
             method: 'post',
@@ -46,7 +46,6 @@ class Register extends Component {
                 this.props.onRouteChange('home')
             }
         })
-        .catch(err => console.log(err));
     }
 
     render() {
