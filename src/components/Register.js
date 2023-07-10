@@ -24,14 +24,19 @@ class Register extends Component {
     }
 
     onSubmitRegister = () => {
+        const { name, email, password } = this.state
+
         //console.log('onSubmitRegister called')
+        if (!name || !email || !password) {
+            return console.log('unable to get user');
+        }
         fetch('http://localhost:3000/register', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                name: this.state.name,
-                email: this.state.email,
-                password: this.state.password
+                name: name,
+                email: email,
+                password: password
             })
         })
         .then(res => res.json())
@@ -41,6 +46,7 @@ class Register extends Component {
                 this.props.onRouteChange('home')
             }
         })
+        .catch(err => console.log(err));
     }
 
     render() {

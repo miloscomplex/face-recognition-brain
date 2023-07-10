@@ -14,24 +14,26 @@ import { calculateNewValue } from "@testing-library/user-event/dist/utils";
 import Signin from "./components/Signin";
 import Register from "./components/Register";
 
+const initialState = {
+  input: "",
+  imageUrl: "", 
+  box: {},
+  route: 'signin', 
+  isSignIn: false,
+  user: {
+    id: '',
+    name: '', 
+    email: '',
+    entries: 0,
+    joined: ''
+  }
+}
+
 class App extends Component {
 
   constructor() {
     super();
-    this.state = {
-      input: "",
-      imageUrl: "", 
-      box: {},
-      route: 'signin', 
-      isSignIn: false,
-      user: {
-        id: '',
-        name: '', 
-        email: '',
-        entries: 0,
-        joined: ''
-      }
-    }
+    this.state = initialState;
   }
 
   loadUser = (data) => {
@@ -49,14 +51,18 @@ class App extends Component {
   }
 
   onBtnSubmit = () => {
-    this.setState({imageUrl: this.state.input})
-    this.faceDetection(this.state.input);
-
+    const { input } = this.state
+    if (input.length) {
+      this.setState({imageUrl: input})
+      this.faceDetection(input);  
+    } else {
+      console.log('error');
+    }
   }
 
   onRouteChange = (route) => {
     if (route === 'signout') {
-      this.setState({isSignIn: false})
+      this.setState(initialState)
     } else if (route === 'home') {
       this.setState({isSignIn: true})
     }
