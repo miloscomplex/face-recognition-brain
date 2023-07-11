@@ -6,7 +6,7 @@ import Logo from './components/Logo';
 import ImageLinkForm from './components/ImageLinkForm';
 import Rank from "./components/Rank";
 import ParticlesBg from "particles-bg";
-import { API_KEY, PAT_KEY, CLARIFAI_USER } from "./services/KEY";
+// import { API_KEY, PAT_KEY, CLARIFAI_USER } from "./services/KEY";
 // import FaceDetection from "./services/FaceDetection";
 import FaceRecognition from "./components/FaceRecognition";
 import { calculateNewValue } from "@testing-library/user-event/dist/utils";
@@ -103,7 +103,7 @@ class App extends Component {
     const image = document.getElementById('input-image');
     const width = Number(image.width);
     const height = Number(image.height);
-    console.log(width, height);
+    // console.log(width, height);
 
     return this.setState({box: {
         leftCol: data.left_col * width,
@@ -112,6 +112,7 @@ class App extends Component {
         bottomRow: height - (data.bottom_row * height)
     }});
   }
+
 }
 
   render() {
