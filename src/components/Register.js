@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { API } from '../constants/index';
 
 class Register extends Component {
 
@@ -30,7 +31,7 @@ class Register extends Component {
         if (!name || !email || !password) {
             return console.log('unable to register');
         }
-        fetch('http://localhost:3000/register', {
+        fetch(`${API}/register`, {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({

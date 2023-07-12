@@ -1,8 +1,11 @@
+import { API } from '../constants/index';
+
 exports.faceDetection = (imgUrl) => {
     // console.log("faceDetection was called");
     const IMAGE_URL = imgUrl;
+    
 
-    fetch('http://localhost:3000/image-detect', {
+    fetch(`${API}/image-detect`, {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -12,7 +15,7 @@ exports.faceDetection = (imgUrl) => {
     .then( res => res.json())
     .then(data => {
       if (data) {
-        fetch('http://localhost:3000/image', {
+        fetch(`${API}/image`, {
           method: 'put',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({

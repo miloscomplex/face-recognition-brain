@@ -12,6 +12,8 @@ import FaceRecognition from "./components/FaceRecognition";
 import { calculateNewValue } from "@testing-library/user-event/dist/utils";
 import Signin from "./components/Signin";
 import Register from "./components/Register";
+import { API } from "./constants/index";
+
 
 const initialState = {
   input: "",
@@ -73,7 +75,7 @@ class App extends Component {
     // console.log("faceDetection was called");
     const IMAGE_URL = imgUrl;
 
-    fetch('http://localhost:3000/image-detect', {
+    fetch(`${API}/image-detect`, {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -82,8 +84,9 @@ class App extends Component {
     })
     .then( res => res.json())
     .then(data => {
+      console.log('data=', data);
       if (data) {
-        fetch('http://localhost:3000/image', {
+        fetch(`${API}/image`, {
           method: 'put',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({
@@ -94,8 +97,8 @@ class App extends Component {
         .then(count => {
           this.setState(Object.assign(this.state.user, {entries: count}))
         })
-        .catch(console.log)
-      }
+        .catch('catch', console.log)
+      } 
       calculateFaceLocation(data.outputs[0].data.regions[0].region_info.bounding_box)
   })
 

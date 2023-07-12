@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { API } from '../constants/index';
 
 class Signin extends React.Component {
 
@@ -26,7 +27,7 @@ class Signin extends React.Component {
             return console.log('unable to signin');
         }
 
-        fetch('http://localhost:3000/signin', {
+        fetch(`${API}/signin`, {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
